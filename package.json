@@ -1,0 +1,20 @@
+{
+  "name": "swanbot-3.0",
+  "version": "3.0.0",
+  "description": "Updated for discord-js 3.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ellis Thompson",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.6.0",
+    "path": "^0.12.7",
+    "pm2": "^4.4.0",
+    "sequelize": "^6.3.3",
+    "sqlite3": "^5.0.0"
+  }
+}
