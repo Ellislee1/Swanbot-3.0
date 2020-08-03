@@ -34,9 +34,11 @@ client.once("ready", async () => {
 });
 
 client.on("message", async (message) => {
-  if (!message.author.bot) {
-    log(message);
-  }
+  try {
+    if (!message.author.bot) {
+      log(message);
+    }
+  } catch {}
   // Drop out if message does not start with a prefix
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 

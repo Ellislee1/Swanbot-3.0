@@ -26,6 +26,8 @@ module.exports = {
       let embed = new Discord.MessageEmbed()
         .setColor("#8332a8")
         .setTitle("Commands")
+        .setURL("https://github.com/Ellislee1/Swanbot-3.0")
+        .setFooter("https://github.com/Ellislee1/Swanbot-3.0")
         .setDescription(
           `Hi! I'm Swanbot 3.0. I'm a custom bot made by a student for the Compsci/Software Eng MSc/MEng Discord. Please find below a list of my commands.\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`
         );
@@ -66,13 +68,14 @@ module.exports = {
       .setColor("#8332a8")
       .setTitle(command.name)
       .setURL("https://github.com/Ellislee1/Swanbot-3.0")
-      .setDescription(command.description);
+      .setDescription(command.description)
+      .setFooter("https://github.com/Ellislee1/Swanbot-3.0");
 
     if (command.aliases) embed.addField("aliases", command.aliases);
     if (command.usage)
       embed.addField("Usage", `${prefix}${command.name} ${command.usage}`);
 
-    embed.addField("Cooldown", `${command.cooldown || 3} seconds`);
+    embed.addField("Cooldown", `${command.cooldown || 3} seconds`, true);
 
     message.channel.send(embed);
   },
