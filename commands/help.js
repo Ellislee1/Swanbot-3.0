@@ -65,6 +65,7 @@ module.exports = {
     let embed = new Discord.MessageEmbed()
       .setColor("#8332a8")
       .setTitle(command.name)
+      .setURL("https://github.com/Ellislee1/Swanbot-3.0")
       .setDescription(command.description);
 
     if (command.aliases) embed.addField("aliases", command.aliases);
