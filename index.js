@@ -45,9 +45,9 @@ client.on("message", async (message) => {
   const commandName = args.shift().toLowerCase();
   try {
     console.log(
-      `${new Date()}:User <${
-        message.member.user.tag
-      }> called <${commandName}>[${args}] in channel <${message.channel.name}>`
+      `${new_date()} ${message.member.user.tag} [${
+        message.channel.name
+      }]:!<${commandName}>[${args}]`
     );
   } catch (err) {}
 
