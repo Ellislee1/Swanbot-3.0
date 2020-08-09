@@ -2,7 +2,7 @@ module.exports = {
   name: "ping",
   description: "Pong!",
   args: false,
-  usage: "",
+  usage: "ping",
   guildOnly: false,
   execute(message, args) {
     message.channels.send("Pong!");
