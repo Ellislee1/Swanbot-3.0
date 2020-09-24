@@ -98,5 +98,5 @@ function get_roles(message, module_code) {
 }
 
 function get_role_id(message, role_to) {
-  return message.guild.roles.cache.find((role) => role.name === role_to);
+  return message.guild.roles.cache.find((role) => role.name === role_to).id;
 }
