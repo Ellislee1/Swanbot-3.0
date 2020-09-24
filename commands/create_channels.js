@@ -30,7 +30,7 @@ module.exports = {
 
     const allmodules = await get_modules();
     const channels = get_channels(message);
-    print(channels);
+    console.log(channels);
   },
 };
 
