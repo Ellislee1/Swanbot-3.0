@@ -35,7 +35,15 @@ module.exports = {
           channel_name: mod.channel,
           channel_type: mod.type,
           module_courses: getCourses(mod.class),
-        });
+        })
+          .then(function (user) {
+            // you can now access the newly created user
+            console.log("success");
+          })
+          .catch(function (err) {
+            // print the error details
+            console.log(err);
+          });
       } catch (err) {
         console.log(`ERROR:: Module ${mod.code} may already exist`);
       }

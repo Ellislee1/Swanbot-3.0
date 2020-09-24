@@ -5,6 +5,6 @@ module.exports = {
   usage: "ping",
   guildOnly: false,
   execute(message, args) {
-    message.channels.send("Pong!");
+    message.reply("Pong!");
   },
 };
