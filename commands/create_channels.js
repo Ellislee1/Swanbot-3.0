@@ -29,8 +29,10 @@ module.exports = {
     }
 
     const allmodules = await get_modules();
-    const channels = get_channels(message);
-    console.log(channels);
+
+    allmodules.forEach((module) => {
+      console.log(get_channels(message, module.channel_name));
+    });
   },
 };
 
@@ -42,8 +44,8 @@ async function get_modules() {
   return modules;
 }
 
-function get_channels(message) {
-  const channels = message.guild.channels.cache.array();
-
-  return channels;
+function get_channels(message, channel_name) {
+  return message.guild.channels.cache.some(
+    (chan) => chan.name === channel_name
+  );
 }
