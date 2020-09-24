@@ -31,7 +31,12 @@ module.exports = {
     const allmodules = await get_modules();
 
     allmodules.forEach((module) => {
-      console.log(get_channels(message, module.channel_name));
+      console.log(
+        `${module.module_code} ${get_channels(
+          message,
+          module.channel_name
+        )} ${get_modules(message, module.module_code)}`
+      );
     });
   },
 };
@@ -48,4 +53,8 @@ function get_channels(message, channel_name) {
   return message.guild.channels.cache.some(
     (chan) => chan.name === channel_name
   );
+}
+
+function get_roles(message, module_code) {
+  return message.guild.channels.cache.some((role) => role.name === module_code);
 }
