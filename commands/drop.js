@@ -25,7 +25,7 @@ module.exports = {
       message.delete();
       return;
     }
-    await drop_channels(message, args);
+    await drop_chanels(message, args);
   },
 };
 
