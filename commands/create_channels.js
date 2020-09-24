@@ -31,12 +31,8 @@ module.exports = {
     const allmodules = await get_modules();
 
     allmodules.forEach((module) => {
-      console.log(
-        `${module.module_code} ${get_channels(
-          message,
-          module.channel_name
-        )} ${get_roles(message, module.module_code)}`
-      );
+      channel = get_channels(message, module.channel_name);
+      role = get_roles(message, module.module_code);
     });
   },
 };
