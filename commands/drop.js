@@ -35,15 +35,14 @@ async function drop_chanels(message, args) {
 
   args.forEach((module) => {
     role = message.member.roles.cache.find(
-      (role) => role.name === module.toUpperCase()
+      (rol) => rol.name === module.toUpperCase()
     );
-    if (
-      message.member.roles.cache.has(
-        (role) => role.name === module.toUpperCase()
-      )
-    ) {
+    console.log(role);
+    try {
       message.member.roles.remove(role);
       dropped.push(module.toUpperCase());
+    } catch (err) {
+      console.log("ERROR:: ", err);
     }
   });
 
