@@ -43,7 +43,7 @@ async function get_modules() {
 }
 
 function get_channels(message) {
-  const channels = message.guild.channels.cache();
+  const channels = message.guild.channels.cache.array();
 
   return cha;
 }
