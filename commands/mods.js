@@ -12,7 +12,7 @@ module.exports = {
     "Show a list of all modules that belong to a specific MSc/MEng course.",
   // Required - How to use the command
   usage:
-    "<Course Abbreviation>\\nCourses:\nInt-MSc: Integrated Masters\nAcs-MSc: Advanced Computer Science, MSc\nDS-MSc: Data Science, MSc\nCBY-MSc: Cyber Security, MSc\nCS-MSc: Computer Science, MSc\nBDAI-MSc: Human-Centred Big Data and Artificial Intelligence, MSc",
+    "<Course Abbreviation>\\nCourses:\nInt-MSc: Integrated Masters\nAcs-MSc: Advanced Computer Science, MSc\nDS-MSc: Data Science, MSc\nCBY-MSc: Cyber Security, MSc\nCS-MSc: Computer Science, MSc\nBDAI-MSc: Human-Centred Big Data and Artificial Intelligence, MSc\nMENG: Software Engineering, MEng",
   // Required - If arguments are expected
   args: true,
   // Required - If the command should only be executed inside a guild

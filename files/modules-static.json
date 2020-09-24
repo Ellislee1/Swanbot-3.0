@@ -356,6 +356,20 @@
       "channel": "cs-m20-msc-project",
       "type": "text",
       "class": ["CS-MSC"]
+    },
+    {
+      "code": "CSCM04",
+      "title": "Software Team Project",
+      "channel": "cscm04-software-team-project",
+      "type": "text",
+      "class": ["MENG"]
+    },
+    {
+      "code": "CSP400",
+      "title": "Software Delivery Project",
+      "channel": "csp400-software-delivery",
+      "type": "text",
+      "class": ["MENG"]
     }
   ]
 }
