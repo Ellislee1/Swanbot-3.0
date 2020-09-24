@@ -1,56 +1,49 @@
 const Discord = require("discord.js");
-const Module = require("../database/models/Module");
-const fs = require("fs");
-const filePath = "./files/modules-static.json";
+const Module = require("../database/models/Module.js");
+const { Op } = require("sequelize");
 
 module.exports = {
   // Required - The name of the command
-  name: "popmodules",
+  name: "createchan",
   // Other ways to call the command
-  aliases: ["createmodules", "cm", "pm", "pop"],
+  aliases: ["cc", "pop"],
   // Required - What the command does
-  description: "Admin command to populate the modules table",
+  description: "Add channels and roles to the server.",
   // Required - How to use the command
-  usage: "",
+  usage: "!createchan",
+  // Required - If arguments are expected
+  args: false,
   // Required - If the command should only be executed inside a guild
   guildOnly: true,
   // Time in between command usages (seconds)
-  cooldown: 0,
+  cooldown: 5,
+  // If access to the client is needed
+  client: true,
   // If the command needs access to the database
   database: true,
   // Execute command
-  async execute(message, args, db) {
+  async execute(message, args, database) {
     memberRoles = message.member.roles.cache;
     if (!memberRoles.some((role) => role.name === "Owner")) {
       return message.reply("You do not have the required role for this.");
     }
 
-    const modules = await get_modules(course);
+    const allmodules = await get_modules();
+    const channels = get_channels(message);
+    print(channels);
   },
 };
 
-function loadFile() {
-  let location = fs.readFileSync(filePath);
-  let data = JSON.parse(location);
-  return data.modules;
-}
-
-function getCourses(coursesArray) {
-  courses = "";
-  coursesArray.forEach((course) => {
-    courses += course;
-    courses += ",";
-  });
-  return courses.slice(0, -1);
-}
-
-async function get_modules(course) {
+async function get_modules() {
   var modules = await Module.findAll({
     attributes: ["module_code", "module_title", "channel_name", "channel_type"],
-    where: {
-      module_courses: { [Op.substring]: course },
-    },
   });
   console.log(`Found: ${modules.length} records`);
   return modules;
+}
+
+function get_channels(message) {
+  const channels = message.guild.channels.cache();
+
+  return cha;
 }
