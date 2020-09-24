@@ -26,8 +26,6 @@ module.exports = {
       return;
     }
     await join_channels(message, args);
-
-    message.delete();
   },
 };
 

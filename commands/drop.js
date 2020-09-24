@@ -1,0 +1,60 @@
+const Discord = require("discord.js");
+const Module = require("../database/models/Module.js");
+
+module.exports = {
+  // Required - The name of the command
+  name: "drop",
+  // Other ways to call the command
+  aliases: [],
+  // Required - What the command does
+  description: "Drop a module using the module code",
+  // Required - How to use the command
+  usage: "<list of module codes>. Seperate module codes using a space.",
+  // Required - If arguments are expected
+  args: true,
+  // Required - If the command should only be executed inside a guild
+  guildOnly: true,
+  // Time in between command usages (seconds)
+  cooldown: 2,
+  // If the command needs access to the database
+  database: true,
+  // Execute command
+  async execute(message, args, database) {
+    if (message.channel.name != "module-enrol") {
+      message.reply("Please do that in the Module-Enrol channel.");
+      message.delete();
+      return;
+    }
+    await drop_channels(message, args);
+  },
+};
+
+async function drop_chanels(message, args) {
+  dropped = [];
+  failed = [];
+
+  args.forEach((module) => {
+    role = message.member.roles.cache.find(
+      (role) => role.name === module.toUpperCase()
+    );
+    if (
+      message.member.roles.cache.has(
+        (role) => role.name === module.toUpperCase()
+      )
+    ) {
+      message.member.roles.remove(role);
+      dropped.push(module.toUpperCase());
+    }
+  });
+
+  if (dropped.length >= 1) {
+    message.author.send(
+      "You have dropped the following modules and will no longer be able to see the channels: " +
+        joined
+    );
+  } else {
+    message.author.send(
+      "Nothing has been dropped, if you believe this to be a mistake please contact an admin."
+    );
+  }
+}
