@@ -52,7 +52,7 @@ module.exports = {
       if (!channel) {
         let role_code = get_role_id(message, module.module_code);
 
-        console.log(`ROLEW +++++ ${everyone_id}`);
+        console.log(`ROLEW +++++ ${role_code}`);
         guild.channels.create(module.channel_name, {
           type: "text",
           permissionOverwrites: [
