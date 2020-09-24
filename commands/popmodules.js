@@ -7,7 +7,7 @@ module.exports = {
   // Required - The name of the command
   name: "popmodules",
   // Other ways to call the command
-  aliases: ["createmodules", "cm", "pm", "pop"],
+  aliases: [],
   // Required - What the command does
   description: "Admin command to populate the modules table",
   // Required - How to use the command
