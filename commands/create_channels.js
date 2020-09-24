@@ -28,11 +28,44 @@ module.exports = {
       return message.reply("You do not have the required role for this.");
     }
 
+    const guild = message.guild;
+    let everyone_id = get_role_id(message, "@everyone");
+    let owner_id = get_role_id(message, "Owner");
+    let admin_id = get_role_id(message, "Server Moderator");
     const allmodules = await get_modules();
 
     allmodules.forEach((module) => {
-      channel = get_channels(message, module.channel_name);
       role = get_roles(message, module.module_code);
+      if (!role) {
+        guild.roles.create({ data: { name: module.module_code } });
+      }
+      channel = get_channels(message, module.channel_name);
+
+      let role_code = get_role_id(message, module.module_code);
+
+      if (!channel) {
+        guild.channel.create(module.channel_name, {
+          type: "text",
+          permissionOverwrites: [
+            {
+              id: everyone_id,
+              deny: ["VIEW_CHANNEL"],
+            },
+            {
+              id: owner_id,
+              allow: ["VIEW_CHANNEL"],
+            },
+            {
+              id: admin_id,
+              allow: ["VIEW_CHANNEL"],
+            },
+            {
+              id: role_code,
+              allow: ["VIEW_CHANNEL"],
+            },
+          ],
+        });
+      }
     });
   },
 };
@@ -53,4 +86,8 @@ function get_channels(message, channel_name) {
 
 function get_roles(message, module_code) {
   return message.guild.roles.cache.some((role) => role.name === module_code);
+}
+
+function get_role_id(message, role_to) {
+  return message.guild.roles.cache.find((role) => role.name === role_to);
 }
