@@ -37,15 +37,15 @@ module.exports = {
     allmodules.forEach((module) => {
       role = get_roles(message, module.module_code);
       if (!role) {
-        guild.roles.create({ data: { name: module.module_code } });
+        console.log(`Creating ${module.module_code}`);
+        guild.roles
+          .create({ data: { name: module.module_code } })
+          .then(console.log("Role Created"));
       }
       channel = get_channels(message, module.channel_name);
 
-      let role_code = get_role_id(message, module.module_code).catch(
-        console.log("You can not do this :(")
-      );
-
       if (!channel) {
+        let role_code = get_role_id(message, module.module_code);
         guild.channel.create(module.channel_name, {
           type: "text",
           permissionOverwrites: [
