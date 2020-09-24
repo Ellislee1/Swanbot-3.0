@@ -46,7 +46,7 @@ module.exports = {
 
       if (!channel) {
         let role_code = get_role_id(message, module.module_code);
-        guild.channel.create(module.channel_name, {
+        guild.channels.create(module.channel_name, {
           type: "text",
           permissionOverwrites: [
             {
