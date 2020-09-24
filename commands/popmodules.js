@@ -29,7 +29,7 @@ module.exports = {
 
     staticModules.forEach((mod) => {
       try {
-        const moduleapp = await Module.create({
+        Module.create({
           module_code: mod.code,
           module_title: mod.title,
           channel_name: mod.channel,
