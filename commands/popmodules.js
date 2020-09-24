@@ -29,21 +29,14 @@ module.exports = {
 
     staticModules.forEach((mod) => {
       try {
-        Module.create({
+        const moduleapp = await Module.create({
           module_code: mod.code,
           module_title: mod.title,
           channel_name: mod.channel,
           channel_type: mod.type,
           module_courses: getCourses(mod.class),
-        })
-          .then(function (user) {
-            // you can now access the newly created user
-            console.log("success");
-          })
-          .catch(function (err) {
-            // print the error details
-            console.log(err);
-          });
+        });
+        console.log("Success");
       } catch (err) {
         console.log(`ERROR:: Module ${mod.code} may already exist`);
       }
