@@ -43,17 +43,18 @@ async function drop_chanels(message, args) {
       dropped.push(module.toUpperCase());
     } catch (err) {
       console.log("ERROR:: ", err);
+      failed.push(module.toUpperCase());
     }
   });
 
   if (dropped.length >= 1) {
     message.author.send(
       "You have dropped the following modules and will no longer be able to see the channels: " +
-        joined
+        dropped
     );
-  } else {
-    message.author.send(
-      "Nothing has been dropped, if you believe this to be a mistake please contact an admin."
-    );
+  }
+
+  if (failed.length >= 1) {
+    message.author.send("Failed to drop the following modules: " + failed);
   }
 }
