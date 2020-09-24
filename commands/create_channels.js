@@ -35,7 +35,7 @@ module.exports = {
         `${module.module_code} ${get_channels(
           message,
           module.channel_name
-        )} ${get_modules(message, module.module_code)}`
+        )} ${get_roles(message, module.module_code)}`
       );
     });
   },
@@ -56,5 +56,5 @@ function get_channels(message, channel_name) {
 }
 
 function get_roles(message, module_code) {
-  return message.guild.channels.cache.some((role) => role.name === module_code);
+  return message.guild.roles.cache.some((role) => role.name === module_code);
 }
