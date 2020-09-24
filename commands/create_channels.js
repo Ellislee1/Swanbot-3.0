@@ -29,11 +29,9 @@ module.exports = {
     }
 
     const guild = message.guild;
-    let everyone_id = get_role_id(message, "@everyone").catch(console.error);
-    let owner_id = get_role_id(message, "Owner").catch(console.error);
-    let admin_id = get_role_id(message, "Server Moderator").catch(
-      console.error
-    );
+    let everyone_id = get_role_id(message, "@everyone");
+    let owner_id = get_role_id(message, "Owner");
+    let admin_id = get_role_id(message, "Server Moderator");
     const allmodules = await get_modules();
 
     allmodules.forEach((module) => {
