@@ -32,6 +32,11 @@ module.exports = {
     let everyone_id = get_role_id(message, "@everyone");
     let owner_id = get_role_id(message, "Owner");
     let admin_id = get_role_id(message, "Server Moderator");
+
+    console.log(everyone_id);
+    console.log(owner_id);
+    console.log(admin_id);
+
     const allmodules = await get_modules();
 
     allmodules.forEach((module) => {
@@ -46,23 +51,25 @@ module.exports = {
 
       if (!channel) {
         let role_code = get_role_id(message, module.module_code);
+
+        console.log(`ROLEW +++++ ${everyone_id}`);
         guild.channels.create(module.channel_name, {
           type: "text",
           permissionOverwrites: [
             {
-              id: everyone_id,
+              id: everyone_id.toString(),
               deny: ["VIEW_CHANNEL"],
             },
             {
-              id: owner_id,
+              id: owner_id.toString(),
               allow: ["VIEW_CHANNEL"],
             },
             {
-              id: admin_id,
+              id: admin_id.toString(),
               allow: ["VIEW_CHANNEL"],
             },
             {
-              id: role_code,
+              id: role_code.toString(),
               allow: ["VIEW_CHANNEL"],
             },
           ],
