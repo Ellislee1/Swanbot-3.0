@@ -29,9 +29,11 @@ module.exports = {
     }
 
     const guild = message.guild;
-    let everyone_id = get_role_id(message, "@everyone");
-    let owner_id = get_role_id(message, "Owner");
-    let admin_id = get_role_id(message, "Server Moderator");
+    let everyone_id = get_role_id(message, "@everyone").catch(console.error);
+    let owner_id = get_role_id(message, "Owner").catch(console.error);
+    let admin_id = get_role_id(message, "Server Moderator").catch(
+      console.error
+    );
     const allmodules = await get_modules();
 
     allmodules.forEach((module) => {
@@ -41,7 +43,9 @@ module.exports = {
       }
       channel = get_channels(message, module.channel_name);
 
-      let role_code = get_role_id(message, module.module_code);
+      let role_code = get_role_id(message, module.module_code).catch(
+        console.log("You can not do this :(")
+      );
 
       if (!channel) {
         guild.channel.create(module.channel_name, {
