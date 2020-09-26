@@ -72,7 +72,7 @@ module.exports = {
         ],
       });
 
-      addmembers(guild, users, name);
+      addmembers(guild, channel, users);
 
       await add_channel(message, name, creator, users);
     }
@@ -108,8 +108,7 @@ function get_role_id(message, role_to) {
   return message.guild.roles.cache.find((role) => role.name === role_to).id;
 }
 
-function addmembers(guild, users, name) {
-  let channel = guild.channels.cache.find((c) => c.name == name);
+function addmembers(guild, channel, users) {
   console.log(channel);
   users.forEach((user) => {
     usr = user.substring(3, 21);
