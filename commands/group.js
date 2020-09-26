@@ -22,7 +22,7 @@ module.exports = {
   database: true,
   // Execute command
   execute(message, args, database) {
-    const name = args[0]..toLowerCase();
+    const name = args[0].toLowerCase();
     const creator = message.author.tag;
     const users = args.slice(name.length).trim().split(" ");
 
