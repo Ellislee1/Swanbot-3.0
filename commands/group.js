@@ -29,13 +29,10 @@ module.exports = {
     const users = args;
     const guild = message.guild;
     let everyone_id = get_role_id(message, "@everyone");
-    const parent = guild.channels.cache.find(
-      (channel) => channel.name === "private"
-    );
-    const pChannel = guild.channels.resolve(parent);
 
-    message.reply(parent);
-    message.reply(pChannel.position);
+    let category = guild.channels.find(
+      (c) => c.name == "Private" && c.type == "category"
+    );
 
     console.log(`Name ${name}, creator ${creator}, users ${users[0]}`);
 
@@ -57,12 +54,12 @@ module.exports = {
     const created = await check_name(name);
 
     if (created) {
-      message.reply("That groupe name is already in use, Sorry!");
+      message.reply("That group name is already in use, Sorry!");
       return;
     } else {
       guild.channels.create(name, {
         type: "text",
-        parent: pChannel.id.toString(),
+        parent: category.id,
         permissionOverwrites: [
           {
             id: everyone_id.toString(),
