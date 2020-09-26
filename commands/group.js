@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const banned_characters = ["<", ">", "!", "@", "&", "#"];
 
 module.exports = {
   // Required - The name of the command
@@ -35,7 +36,7 @@ module.exports = {
       return;
     }
 
-    if (name[0] == "@" || name[0] == "#") {
+    if (banned_characters.includes(name[0])) {
       message.reply(
         "Please ensure the name starts with a valid character i.e. not @/#"
       );
