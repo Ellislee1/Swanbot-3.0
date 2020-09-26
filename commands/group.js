@@ -17,7 +17,7 @@ module.exports = {
   // Required - If the command should only be executed inside a guild
   guildOnly: true,
   // Time in between command usages (seconds)
-  cooldown: 30,
+  cooldown: 0,
   // If access to the client is needed
   client: false,
   // If the command needs access to the database
@@ -27,6 +27,7 @@ module.exports = {
     const name = args.shift().toLowerCase();
     const creator = message.author.id;
     const users = args;
+    const guild = message.guild;
 
     console.log(`Name ${name}, creator ${creator}, users ${users[0]}`);
 
@@ -50,6 +51,23 @@ module.exports = {
     if (created) {
       message.reply("That groupe name is already in use, Sorry!");
       return;
+    } else {
+      guild.channels.create(name, {
+        type: "text",
+        parent: guild.channels.resolve((channel) => channel.name === "PRIVATE"),
+        permissionOverwrites: [
+          {
+            id: everyone_id.toString(),
+            deny: ["VIEW_CHANNEL"],
+          },
+          {
+            id: creator,
+            allow: ["VIEW_CHANNEL"],
+          },
+        ],
+      });
+
+      await add_channel(message, name, creator, users);
     }
   },
 };
@@ -63,4 +81,18 @@ async function check_name(name) {
   });
   console.log(`Found: ${groups.length} records`);
   return groups.length >= 1;
+}
+
+async function add_channel(message, name, creator, users) {
+  const channel = await Group.create({
+    group_name: name,
+    group_creator: creator,
+    creation_date: new Date(),
+    users: "N/A",
+  });
+
+  if (!channel) {
+    message.reply("there was an error creating the channel");
+  }
+  return;
 }
