@@ -26,7 +26,7 @@ module.exports = {
     const creator = message.author.id;
     const users = args;
 
-    console.log(`Name ${name}, creator ${creator}, users ${users}`);
+    console.log(`Name ${name}, creator ${creator}, users ${users[0]}`);
 
     if (name.length > 25 || name.langth < 1) {
       message.reply(
