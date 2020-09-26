@@ -28,6 +28,7 @@ module.exports = {
     const creator = message.author.id;
     const users = args;
     const guild = message.guild;
+    let everyone_id = get_role_id(message, "@everyone");
 
     console.log(`Name ${name}, creator ${creator}, users ${users[0]}`);
 
@@ -95,4 +96,8 @@ async function add_channel(message, name, creator, users) {
     message.reply("there was an error creating the channel");
   }
   return;
+}
+
+function get_role_id(message, role_to) {
+  return message.guild.roles.cache.find((role) => role.name === role_to).id;
 }
