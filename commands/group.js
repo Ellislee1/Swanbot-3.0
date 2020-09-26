@@ -72,6 +72,12 @@ module.exports = {
         ],
       });
 
+      let channel = guild.channels.cache.find(
+        (c) => c.name == name && c.type == "text"
+      );
+
+      addmembers(guild, channel, users);
+
       await add_channel(message, name, creator, users);
     }
   },
@@ -104,4 +110,18 @@ async function add_channel(message, name, creator, users) {
 
 function get_role_id(message, role_to) {
   return message.guild.roles.cache.find((role) => role.name === role_to).id;
+}
+
+function addmembers(guild, channel, users) {
+  users.forEach((user) => {
+    usr = users.substring(3, 21);
+    // let this_user = guild.members.cache.get(user.id);
+
+    channel.overwritePermissions([
+      {
+        id: usr,
+        deny: ["VIEW_CHANNEL"],
+      },
+    ]);
+  });
 }
