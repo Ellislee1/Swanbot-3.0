@@ -61,6 +61,6 @@ async function check_name(name) {
       group_name: name,
     },
   });
-  console.log(`Found: ${modules.length} records`);
+  console.log(`Found: ${groups.length} records`);
   return groups.length >= 1;
 }
