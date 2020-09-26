@@ -5,6 +5,7 @@ const Discord = require("discord.js");
 const { prefix } = require("./config.json");
 const sqDB = require("./database/db");
 const Modules = require("./database/models/Module");
+const Groups = require("./database/models/Groups");
 
 const client = new Discord.Client();
 const TOKEN = process.env.TOKEN;
@@ -124,6 +125,7 @@ client.on("message", async (message) => {
 
 function buildTables() {
   Modules.init(sqDB);
+  Groups.init(sqDB);
 
   sqDB.sync();
 }
