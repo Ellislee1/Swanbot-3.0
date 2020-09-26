@@ -57,7 +57,7 @@ module.exports = {
       message.reply("That group name is already in use, Sorry!");
       return;
     } else {
-      guild.channels.create(name, {
+      let channel = guild.channels.create(name, {
         type: "text",
         parent: category.id,
         permissionOverwrites: [
@@ -71,10 +71,6 @@ module.exports = {
           },
         ],
       });
-
-      let channel = guild.channels.cache.find(
-        (c) => c.name == name && c.type == "text"
-      );
 
       addmembers(guild, channel, users);
 
