@@ -76,7 +76,7 @@ module.exports = {
       addmembers(guild, channel, users);
 
       await add_channel(message, name, creator, users);
-      channel.message(`@everyone This is the ${name} channel!`);
+      channel.send(`@everyone This is the ${name} channel!`);
     }
   },
 };
