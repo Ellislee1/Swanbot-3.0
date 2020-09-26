@@ -112,7 +112,7 @@ function addmembers(guild, channel, users) {
   console.log(channel);
   users.forEach((user) => {
     usr = user.substring(3, 21);
-    let this_user = guild.members.cache.get(user.id);
+    let this_user = guild.members.cache.get(usr);
 
     channel
       .createOverwrite(this_user, {
