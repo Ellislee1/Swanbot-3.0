@@ -23,7 +23,7 @@ module.exports = {
   // Execute command
   execute(message, args, database) {
     const name = args.shift().toLowerCase();
-    const creator = message.author.tag;
+    const creator = message.author.id;
     const users = args;
 
     console.log(`Name ${name}, creator ${creator}, users ${users}`);
