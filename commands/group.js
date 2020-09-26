@@ -24,7 +24,7 @@ module.exports = {
   execute(message, args, database) {
     const name = args[0].toLowerCase();
     const creator = message.author.tag;
-    const users = args.slice(name.length).trim().split(" ");
+    const users = args.shift();
 
     console.log(`Name ${name}, creator ${creator}, users ${users}`);
 
