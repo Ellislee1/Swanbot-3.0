@@ -111,13 +111,15 @@ function get_role_id(message, role_to) {
 function addmembers(guild, channel, users) {
   users.forEach((user) => {
     usr = user.substring(3, 21);
-    // let this_user = guild.members.cache.get(user.id);
+    let this_user = guild.members.cache.get(user.id);
 
-    channel.overwritePermissions([
-      {
-        id: usr,
-        deny: ["VIEW_CHANNEL"],
-      },
-    ]);
+    channel
+      .createOverwrite(this_user, {
+        VIEW_CHANNEL: true,
+      })
+      .then((channel) =>
+        console.log(channel.permissionOverwrites.get(this_user.id))
+      )
+      .catch(console.error);
   });
 }
