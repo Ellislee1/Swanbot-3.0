@@ -114,7 +114,7 @@ function get_role_id(message, role_to) {
 
 function addmembers(guild, channel, users) {
   users.forEach((user) => {
-    usr = users.substring(3, 21);
+    usr = user.substring(3, 21);
     // let this_user = guild.members.cache.get(user.id);
 
     channel.overwritePermissions([
