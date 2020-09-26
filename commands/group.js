@@ -30,7 +30,7 @@ module.exports = {
     const guild = message.guild;
     let everyone_id = get_role_id(message, "@everyone");
 
-    let category = guild.channels.find(
+    let category = guild.channels.cache.find(
       (c) => c.name == "Private" && c.type == "category"
     );
 
