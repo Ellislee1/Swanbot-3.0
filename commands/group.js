@@ -62,7 +62,7 @@ module.exports = {
     } else {
       guild.channels.create(name, {
         type: "text",
-        parent: guild.channels.resolve((channel) => channel.name === "PRIVATE"),
+        parent: pChannel,
         permissionOverwrites: [
           {
             id: everyone_id.toString(),
