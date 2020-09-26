@@ -33,7 +33,7 @@ module.exports = {
       (channel) => channel.name === "PRIVATE"
     );
 
-    message.reply(parent.name);
+    message.reply(parent);
     message.replt(parent.position);
 
     console.log(`Name ${name}, creator ${creator}, users ${users[0]}`);
