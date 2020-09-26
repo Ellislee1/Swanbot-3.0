@@ -8,7 +8,8 @@ module.exports = {
   // Other ways to call the command
   aliases: ["team"],
   // Required - What the command does
-  description: "Create a channel and add people to it for a provate group.",
+  description:
+    "Create a channel and add people to it for a private text group.",
   // Required - How to use the command
   usage:
     "<group name> <users to add>. The group name must be all lowercase and no spaces i.e. <group_alpha>",
@@ -75,6 +76,7 @@ module.exports = {
       addmembers(guild, channel, users);
 
       await add_channel(message, name, creator, users);
+      channel.message(`@everyone This is the ${name} channel!`);
     }
   },
 };
