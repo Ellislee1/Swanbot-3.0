@@ -29,12 +29,13 @@ module.exports = {
     const users = args;
     const guild = message.guild;
     let everyone_id = get_role_id(message, "@everyone");
-    const parent = guild.channels.resolve(
-      (channel) => channel.name === "private"
+    const parent = guild.channels.cache.find(
+      (channel) => channel.name === "PRIVATE"
     );
+    const pChannel = guild.channels.resolve(parent);
 
     message.reply(parent);
-    message.replt(parent.position);
+    message.replt(pChannel.position);
 
     console.log(`Name ${name}, creator ${creator}, users ${users[0]}`);
 
