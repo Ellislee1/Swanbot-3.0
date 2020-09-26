@@ -57,7 +57,7 @@ module.exports = {
       message.reply("That group name is already in use, Sorry!");
       return;
     } else {
-      let channel = guild.channels.create(name, {
+      let channel = await guild.channels.create(name, {
         type: "text",
         parent: category.id,
         permissionOverwrites: [
