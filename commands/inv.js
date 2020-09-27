@@ -62,7 +62,7 @@ async function get_owner(chan_name) {
 function addmembers(guild, channel, users) {
   console.log(channel);
   users.forEach((user) => {
-    let this_user = guild.members.cache.get(usr);
+    let this_user = guild.members.cache.get(user);
 
     channel
       .createOverwrite(this_user, {
