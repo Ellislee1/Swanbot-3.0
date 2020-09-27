@@ -31,7 +31,7 @@ async function get_owner(chan_name) {
   var creator = await Group.findAll({
     attributes: ["group_creator"],
     where: {
-      group_name: name,
+      group_name: chan_name,
     },
   });
   console.log(creator);
