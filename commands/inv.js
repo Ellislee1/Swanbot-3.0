@@ -55,6 +55,7 @@ async function get_owner(chan_name) {
       group_name: chan_name,
     },
   });
+  console.log(creator);
   return creator.dataValues.group_creator;
 }
 
