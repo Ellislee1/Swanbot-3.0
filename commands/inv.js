@@ -7,9 +7,10 @@ module.exports = {
   // Other ways to call the command
   aliases: ["invite", "add"],
   // Required - What the command does
-  description: "Add a member to a private channel",
+  description:
+    "Add a member to a private channel, using their IDs (right click name copy id)",
   // Required - How to use the command
-  usage: "<user tags>, !inv @jeremy @kyle @harry",
+  usage: "<user tags>, !inv 671435844510416916 747415844510416916",
   // Required - If arguments are expected
   args: true,
   // Required - If the command should only be executed inside a guild
@@ -57,7 +58,6 @@ async function get_owner(chan_name) {
 function addmembers(guild, channel, users) {
   console.log(channel);
   users.forEach((user) => {
-    usr = user.substring(3, 21);
     let this_user = guild.members.cache.get(usr);
 
     channel
