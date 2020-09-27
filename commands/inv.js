@@ -35,6 +35,9 @@ module.exports = {
       return;
     }
 
+    console.log(author_id.toString());
+    console.log(owner.toString());
+
     console.log(author_id.toString() == owner.toString());
     if (author_id.toString() != owner.toString()) {
       message.reply("You must be the creator of the channel to invite people.");
