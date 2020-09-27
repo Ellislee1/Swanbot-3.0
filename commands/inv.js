@@ -55,7 +55,7 @@ async function get_owner(chan_name) {
       group_name: chan_name,
     },
   });
-  return creator.group_creator;
+  return creator.dataValues.group_creator;
 }
 
 function addmembers(guild, channel, users) {
