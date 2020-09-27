@@ -9,7 +9,7 @@ module.exports = {
   // Required - What the command does
   description: "Add a member to a private channel",
   // Required - How to use the command
-  usage: "<user tag>",
+  usage: "<user tags>, !inv @jeremy @kyle @harry",
   // Required - If arguments are expected
   args: true,
   // Required - If the command should only be executed inside a guild
@@ -22,8 +22,25 @@ module.exports = {
   database: true,
   // Execute command
   async execute(message, args, database) {
-    var name = message.channel.name;
-    await get_owner(name);
+    const guild = message.guild;
+    const channel = message.channel;
+    const author_id = message.author.id;
+    const owner = await get_owner(channel.name);
+
+    if (owner == "") {
+      message.reply(
+        "This channel is not a private channel and you can not invite people to it."
+      );
+      return;
+    }
+
+    console.log(author_id.toString() == owner.toString());
+    if (author_id.toString() != owner.toString()) {
+      message.reply("You must be the creator of the channel to invite people.");
+      return;
+    }
+
+    addmembers(guild, channel, args);
   },
 };
 
@@ -34,7 +51,22 @@ async function get_owner(chan_name) {
       group_name: chan_name,
     },
   });
-  console.log(creator);
-  console.log(creator == "");
-  return;
+  return creator;
+}
+
+function addmembers(guild, channel, users) {
+  console.log(channel);
+  users.forEach((user) => {
+    usr = user.substring(3, 21);
+    let this_user = guild.members.cache.get(usr);
+
+    channel
+      .createOverwrite(this_user, {
+        VIEW_CHANNEL: true,
+      })
+      .then((channel) =>
+        console.log(channel.permissionOverwrites.get(this_user.id))
+      )
+      .catch(console.error);
+  });
 }
