@@ -1,18 +1,18 @@
 {
-  "name": "swanbot-3.1",
-  "version": "1.0.0",
-  "description": "",
+  "name": "swanbot-3.0",
+  "version": "3.0.0",
+  "description": "Updated for discord-js 3.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Ellis Thompson",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.3.1",
-    "discord.js-commando": "git+https://github.com/discordjs/Commando.git",
     "dotenv": "^8.2.0",
     "eslint": "^7.10.0",
+    "path": "^0.12.7",
     "pm2": "^4.5.0",
     "sequelize": "^6.3.5",
     "sqlite3": "^5.0.0"
