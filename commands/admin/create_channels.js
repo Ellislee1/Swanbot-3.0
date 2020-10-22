@@ -13,6 +13,7 @@ module.exports = class CreateChannel extends Command {
 			description: 'Add all channels to the discord server',
             guildOnly: true,
             clientPermissions: ['ADMINISTRATOR'],
+            hidden = true,
 		});
     }
     
