@@ -54,15 +54,18 @@ function buildTables() {
 }
 
 function log(message) {
-  const channel = message.guild.channels.cache.find(
-    (channel) => channel.name == "log"
-  );
+  try {
+    const channel = message.guild.channels.cache.find(
+      (channel) => channel.name == "log"
+    );
 
-  channel.send(
-    `\`\`\`${new_date()} ${message.member.user.tag} [${
-      message.channel.name
-    }]:\n${message.content}\`\`\``
-  );
+    channel.send(
+      `\`\`\`${new_date()} ${message.member.user.tag} [${message.channel.name
+      }]:\n${message.content}\`\`\``
+    );
+  } catch (err) {
+    console.log("Command was not issued on a server. This is normal!")
+  }
 }
 
 function new_date() {
