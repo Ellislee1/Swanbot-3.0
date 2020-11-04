@@ -24,25 +24,24 @@ module.exports = class Modules extends Command {
 	async run(message, { course }) {
 		var modules = await get_modules(course);
 		
-        let embed_base = new Discord.MessageEmbed()
-      .setColor("#8332a8")
-      .setTitle("Modules")
-      .setDescription(
-        `These are the module codes and titles that are related to the course ${course}`
-      )
-      .setTimestamp()
-      .setFooter("- Swanbot 3.0 ❤️");
+    let embed_base = new Discord.MessageEmbed()
+    .setColor("#8332a8")
+    .setTitle("Modules")
+    .setDescription(
+      `These are the module codes and titles that are related to the course ${course}`
+    )
+    .setTimestamp()
+    .setFooter("- Swanbot 3.0 ❤️");
 
     modules.forEach((module) => {
       embed_base.addField(
         module.dataValues.module_title,
-        module.dataValues.module_code,
-        true
+        module.dataValues.module_code
       );
     });
 
     message.reply(embed_base);
-    }
+  }
 };
 
 async function get_modules(course) {
