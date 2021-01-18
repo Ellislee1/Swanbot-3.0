@@ -157,7 +157,7 @@ function new_date() {
   return newdate;
 }
 
-function logging(args) {
+async function logging(args) {
   try {
     console.log(args[0])
 		await Log.create({
