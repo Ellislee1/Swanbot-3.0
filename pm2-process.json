@@ -1,0 +1,9 @@
+{
+    "script": "index.js",
+    "watch": true,
+    "ignore_watch": ["database/database.sqlite"],
+    "watch_options": {
+        "followSymlinks": false
+    },
+    "name": "SERVER"
+}
