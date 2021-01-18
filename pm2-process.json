@@ -1,7 +1,7 @@
 {
     "script": "index.js",
     "watch": true,
-    "ignore_watch": ["database/database.sqlite"],
+    "ignore_watch": ["database/database.sqlite","./database/database.sqlite","/database/database.sqlite","database.sqlite"],
     "watch_options": {
         "followSymlinks": false
     },
