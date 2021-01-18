@@ -157,18 +157,16 @@ function new_date() {
   return newdate;
 }
 
-async function logging(args) {
+function logging(args) {
   try {
-		const log_item = Log.build({
+    console.log(args[0])
+		await Log.create({
 			date: args[0],
 			time: args[1],
 			user: args[3],
 			channel: args[4],
 			message: args[5]
     });
-  
-    console.log(log_item instanceof User);
-    await log_item.save();
     console.log('Saved to server');
   } catch (err) {
     console.log("Error:")
