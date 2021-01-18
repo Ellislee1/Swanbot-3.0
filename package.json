@@ -13,6 +13,7 @@
     "discord.js-commando": "git+https://github.com/discordjs/Commando.git",
     "dotenv": "^8.2.0",
     "eslint": "^7.10.0",
+    "hash-it": "^4.0.5",
     "pm2": "^4.5.0",
     "sequelize": "^6.3.5",
     "sqlite3": "^5.0.0"

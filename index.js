@@ -1,4 +1,5 @@
 require("dotenv").config();
+const hash = require("hash-it").default;
 
 const sqDB = require("./database/db");
 const Modules = require("./database/models/Module");
@@ -65,6 +66,7 @@ function log(message) {
     user = message.member.user.tag;
     chan = message.channel.name;
     content = String(message.content);
+    console.log(hash((date + time + content)));
     const data = [date, time, user, chan, content];
 
     logging(data);
