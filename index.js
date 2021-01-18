@@ -158,6 +158,7 @@ function new_date() {
 }
 
 async function logging(args) {
+  try {
 		const log_item = Log.build({
 			date: args[0],
 			time: args[1],
@@ -166,11 +167,11 @@ async function logging(args) {
 			message: args[5]
     });
   
-  console.log(log_item instanceof User);
-  try {
-    await jane.save();
-    console.log('Jane was saved to the database!');
+    console.log(log_item instanceof User);
+    await log_item.save();
+    console.log('Saved to server');
   } catch (err) {
+    console.log("Error:")
     console.log(err);
   }
 }
