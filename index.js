@@ -82,7 +82,7 @@ function get_date() {
   var date = new Date();
 
   var year = date.getFullYear();
-  var day = date.getDay();
+  var day = date.getDate();
   var month = date.getMonth();
 
   console.log(month)
@@ -127,7 +127,7 @@ function new_date() {
   var date = new Date();
 
   var year = date.getFullYear();
-  var day = date.getDate()();
+  var day = date.getDate();
   var month = date.getMonth();
 
   var hours = date.getHours();
