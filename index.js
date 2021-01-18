@@ -62,12 +62,12 @@ function log(message) {
     );
     date = get_date();
     time = get_time();
-    user = message.member.user.tag
-    chan = message.channel.name
-    content = message.content
-    args = [date, time, user, chan, content, args];
+    user = message.member.user.tag;
+    chan = message.channel.name;
+    content = message.content;
+    const data = [date, time, user, chan, content, args];
 
-    logging(args);
+    logging(data);
 
     channel.send(
       `\`\`\`${new_date()} ${user} [${chan}]:\n${content}\`\`\``
