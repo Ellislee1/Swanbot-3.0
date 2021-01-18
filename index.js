@@ -64,7 +64,7 @@ function log(message) {
     time = get_time();
     user = message.member.user.tag;
     chan = message.channel.name;
-    content = message.content;
+    content = String(message.content);
     const data = [date, time, user, chan, content];
 
     logging(data);
@@ -85,6 +85,8 @@ function get_date() {
   var day = date.getDay();
   var month = date.getMonth();
 
+  console.log(month)
+  console.log(day)
   newdate =
     year +
     "-" +
@@ -164,9 +166,9 @@ async function logging(args) {
 		await Log.create({
 			date: args[0],
 			time: args[1],
-			user: args[3],
-			channel: args[4],
-			message: args[5]
+			user: args[2],
+			channel: args[3],
+			message: args[4]
     });
     console.log('Saved to server');
   } catch (err) {
