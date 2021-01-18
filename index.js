@@ -158,11 +158,19 @@ function new_date() {
 }
 
 async function logging(args) {
-		const log_item = Log.create({
+		const log_item = Log.build({
 			date: args[0],
 			time: args[1],
 			user: args[3],
 			channel: args[4],
 			message: args[5]
-		});
+    });
+  
+  console.log(log_item instanceof User);
+  try {
+    await jane.save();
+    console.log('Jane was saved to the database!');
+  } catch (err) {
+    console.log(err);
+  }
 }
