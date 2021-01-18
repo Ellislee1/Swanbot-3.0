@@ -67,12 +67,13 @@ function log(message) {
     content = message.content
     args = [date, time, user, chan, content, args];
 
-    logging(args)
+    logging(args);
+
     channel.send(
       `\`\`\`${new_date()} ${user} [${chan}]:\n${content}\`\`\``
     );
   } catch (err) {
-    console.log("Command was not issued on a server. This is normal!")
+    console.log(err)
   }
 }
 
