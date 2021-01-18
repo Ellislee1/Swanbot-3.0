@@ -3,10 +3,14 @@ const { DataTypes, Model } = require("sequelize");
 module.exports = class Group extends Model {
   static init(sequelize) {
     return super.init(
-      {
+        {
         date: {
-          type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
           primaryKey: true,
+        },
+        date: {
+          type: DataTypes.STRING
         },
         time: {
           type: DataTypes.STRING,
